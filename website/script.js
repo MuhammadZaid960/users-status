@@ -78,10 +78,10 @@ const renderAllHTML = (usersDB) => {
   </div>
   `;
 };
-const renders = (Userdb) => {
+const getRenderHTML = (Userdb) => {
   return (document.querySelector(".users").innerHTML = renderAllHTML(Userdb));
 };
-renders(usersDB);
+getRenderHTML(usersDB);
 const statusBtn = document.querySelectorAll(".users_card--btn");
 statusBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -89,6 +89,6 @@ statusBtn.forEach((btn) => {
     const getId = clikedBtn.dataset.id;
     const user = usersDB.findIndex((u) => u.id == getId);
     usersDB[user].isActive = !usersDB[user].isActive;
-    renders(usersDB);
+    getRenderHTML(usersDB);
   });
 });
