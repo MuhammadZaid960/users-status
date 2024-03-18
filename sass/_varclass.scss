@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  align-items: center;
+  gap: $cardGap;
+}
+.active-status {
+  color: #338600;
+  background-color: #33860033;
+}
+.inactive-status {
+  color: #e84804;
+  background: #e8480433;
+}
+.active-btn {
+  background: #e84804;
+}
+.inactive-btn {
+  background: #338600;
+}
+.hidden {
+  display: none;
+}

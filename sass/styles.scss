@@ -1,0 +1,59 @@
+@import "./vars";
+@import "./varclass";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700;800&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+#wrapper {
+  max-width: 1400px;
+  width: 100%;
+  padding: 30px 50px 30px 120px;
+}
+.primary-heading {
+  font-size: 52px;
+  margin-bottom: $marginbottom;
+}
+.secondary-heading {
+  font-size: 32px;
+  margin-bottom: $cardGap;
+}
+.users {
+  &_active {
+    margin-bottom: $marginbottom;
+  }
+  &_cards {
+    flex-wrap: wrap;
+  }
+  &_card {
+    width: 200px;
+    padding: 20px;
+    flex-direction: column;
+    border: 1px solid #00000033;
+    border-radius: 4px;
+    &--status {
+      font-size: 16px;
+      padding: 5px 20px;
+      border-radius: 34px;
+    }
+    &--btn {
+      border: none;
+      font-size: 12px;
+      padding: 10px 20px;
+      color: #ffffff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        scale: 1.04;
+        transform: translateY(-3px);
+        box-shadow: 5px 5px 15px #979292;
+      }
+    }
+  }
+}

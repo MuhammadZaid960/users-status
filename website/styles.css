@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700;800&display=swap");
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.active-status {
+  color: #338600;
+  background-color: rgba(51, 134, 0, 0.2);
+}
+
+.inactive-status {
+  color: #e84804;
+  background: rgba(232, 72, 4, 0.2);
+}
+
+.active-btn {
+  background: #e84804;
+}
+
+.inactive-btn {
+  background: #338600;
+}
+
+.hidden {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+
+#wrapper {
+  max-width: 1400px;
+  width: 100%;
+  padding: 30px 50px 30px 120px;
+}
+
+.primary-heading {
+  font-size: 52px;
+  margin-bottom: 80px;
+}
+
+.secondary-heading {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.users_active {
+  margin-bottom: 80px;
+}
+.users_cards {
+  flex-wrap: wrap;
+}
+.users_card {
+  width: 200px;
+  padding: 20px;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.users_card--status {
+  font-size: 16px;
+  padding: 5px 20px;
+  border-radius: 34px;
+}
+.users_card--btn {
+  border: none;
+  font-size: 12px;
+  padding: 10px 20px;
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.users_card--btn:hover {
+  scale: 1.04;
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 15px #979292;
+}
