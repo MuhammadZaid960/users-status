@@ -40,6 +40,16 @@ let usersDB = [
     username: "Muzammil",
     isActive: true,
   },
+  {
+    id: 9,
+    username: "Ahsan dev",
+    isActive: false,
+  },
+  {
+    id: 10,
+    username: "Bilal dev",
+    isActive: true,
+  },
 ];
 const renderUserCard = ({ id, username, isActive }) => {
   const statusText = isActive == true ? "Active" : "Inactive";
@@ -57,9 +67,7 @@ const renderUserCard = ({ id, username, isActive }) => {
     </div>
   `;
 };
-const renderUsers = (Userdb) => {
-  return Userdb.map(renderUserCard).join(" ");
-};
+const renderUsers = (Userdb) => Userdb.map(renderUserCard).join(" ");
 const renderAllHTML = (usersDB) => {
   const activeUser = usersDB.filter(({ isActive }) => isActive);
   const inactiveUser = usersDB.filter(({ isActive }) => !isActive);
@@ -78,17 +86,20 @@ const renderAllHTML = (usersDB) => {
   </div>
   `;
 };
-const getRenderHTML = (Userdb) => {
-  return (document.querySelector(".users").innerHTML = renderAllHTML(Userdb));
-};
+const getRenderHTML = (Userdb) =>
+  (document.querySelector(".users").innerHTML = renderAllHTML(Userdb));
 getRenderHTML(usersDB);
-const statusBtn = document.querySelectorAll(".users_card--btn");
-statusBtn.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const clikedBtn = e.target;
-    const getId = clikedBtn.dataset.id;
-    const user = usersDB.findIndex((u) => u.id == getId);
-    usersDB[user].isActive = !usersDB[user].isActive;
-    getRenderHTML(usersDB);
+const btnHandler = () => {
+  const allBtn = document.querySelectorAll(".users_card--btn");
+  allBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const currentBtn = e.target;
+      const btnId = currentBtn.dataset.id;
+      const user = usersDB.find((u) => u.id == btnId);
+      user.isActive = !user.isActive;
+      getRenderHTML(usersDB);
+      btnHandler();
+    });
   });
-});
+};
+btnHandler();
