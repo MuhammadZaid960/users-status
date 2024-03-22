@@ -87,5 +87,45 @@
 .users_card--btn:hover {
   scale: 1.04;
   transform: translateY(-3px);
-  box-shadow: 5px 5px 15px #979292;
+  box-shadow: 5px 6px 20px #a39898;
+}
+
+#box {
+  width: 250px;
+  height: 240px;
+  color: #fff;
+  background: #262626;
+  position: relative;
+  /* margin: 150px; */
+  padding: 30px;
+}
+
+#box::after,
+#box::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
+  background-size: 400%;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: -1;
+  animation: animated-shadow 10s linear infinite alternate;
+}
+
+#box::after {
+  filter: blur(30px);
+}
+
+@keyframes animated-shadow {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }

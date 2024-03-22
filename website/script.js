@@ -52,13 +52,12 @@ let usersDB = [
   },
 ];
 const renderUserCard = ({ id, username, isActive }) => {
-  const statusText = isActive == true ? "Active" : "Inactive";
-  const statusClass = isActive == true ? "active-status" : "inactive-status";
-  const btnText =
-    isActive == true ? "Deactivate the user!" : "Activate the user!";
-  const btnClass = isActive == true ? "active-btn" : "inactive-btn";
+  const statusText = isActive ? "Active" : "Inactive";
+  const statusClass = isActive ? "active-status" : "inactive-status";
+  const btnText = isActive ? "Deactivate the user!" : "Activate the user!";
+  const btnClass = isActive ? "active-btn" : "inactive-btn";
   return `
-    <div class="users_card flex">
+    <div class="users_card flex" id="box">
       <h2 class="users_card--name">${username}</h2>
       <h3 class="users_card--status ${statusClass}">${statusText}</h3>
       <button class="users_card--btn ${btnClass}" data-id =${id}>
@@ -71,14 +70,14 @@ const renderUsers = (Userdb) => Userdb.map(renderUserCard).join(" ");
 const renderAllHTML = (usersDB) => {
   const activeUser = usersDB.filter(({ isActive }) => isActive);
   const inactiveUser = usersDB.filter(({ isActive }) => !isActive);
-  const ahiddenClass = activeUser.length == 0 ? "hidden" : "";
-  const inahiddenClass = inactiveUser.length == 0 ? "hidden" : "";
+  const activeHiddenClass = activeUser.length == 0 ? "hidden" : "";
+  const inactiveHiddenClass = inactiveUser.length == 0 ? "hidden" : "";
   return `
-  <div class="users_active ${ahiddenClass}">
+  <div class="users_active ${activeHiddenClass}">
      <h1 class="secondary-heading">Active Users</h1>
      <div class="users_cards active_cards flex">${renderUsers(activeUser)}</div>
   </div>
-  <div class="users_inactive ${inahiddenClass}">
+  <div class="users_inactive ${inactiveHiddenClass}">
     <h1 class="secondary-heading">Inactive Users</h1>
     <div class="users_cards inactive_cards flex">${renderUsers(
       inactiveUser
@@ -93,8 +92,8 @@ const btnHandler = () => {
   const allBtn = document.querySelectorAll(".users_card--btn");
   allBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const currentBtn = e.target;
-      const btnId = currentBtn.dataset.id;
+      const btnClicked = e.target;
+      const btnId = btnClicked.dataset.id;
       const user = usersDB.find((u) => u.id == btnId);
       user.isActive = !user.isActive;
       getRenderHTML(usersDB);
