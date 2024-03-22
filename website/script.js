@@ -57,7 +57,7 @@ const renderUserCard = ({ id, username, isActive }) => {
   const btnText = isActive ? "Deactivate the user!" : "Activate the user!";
   const btnClass = isActive ? "active-btn" : "inactive-btn";
   return `
-    <div class="users_card flex" id="box">
+    <div class="users_card flex">
       <h2 class="users_card--name">${username}</h2>
       <h3 class="users_card--status ${statusClass}">${statusText}</h3>
       <button class="users_card--btn ${btnClass}" data-id =${id}>
